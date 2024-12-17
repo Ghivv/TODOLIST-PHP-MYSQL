@@ -11,25 +11,27 @@ namespace View {
         }
 
         function showTodolist(): void {
-            $this->todolistService->showTodolist();
+            while (true) {
+                $this->todolistService->showTodolist();
 
-            echo "MENU" . PHP_EOL;
-            echo "1. Tambah Todo" . PHP_EOL;
-            echo "2. Hapus Todo" . PHP_EOL;
-            echo "3. Keluar" . PHP_EOL;
-
-            $pilihan = InputHelper::input("Pilih");
-
-            if ($pilihan == "1") {
-                $this->addTodolist();
-            } else if ($pilihan == "2") {
-                $this->removeTodolist();
-            } elseif ($pilihan == "x") {
-                break;
-            } else {
-                echo "Pilihan tidak dimengerti" . PHP_EOL;
+                echo "MENU" . PHP_EOL;
+                echo "1. Tambah Todo" . PHP_EOL;
+                echo "2. Hapus Todo" . PHP_EOL;
+                echo "3. Keluar" . PHP_EOL;
+    
+                $pilihan = InputHelper::input("Pilih");
+    
+                if ($pilihan == "1") {
+                    $this->addTodolist();
+                } else if ($pilihan == "2") {
+                    $this->removeTodolist();
+                } else if ($pilihan == "x") {
+                    break;
+                } else {
+                    echo "Pilihan tidak dimengerti" . PHP_EOL;
+                }
             }
-            echo "Sampai Jumpa lagi" . PHP_EOL;
+            echo "Sampai Jumpa lagi" . PHP_EOL;       
         }
 
         function addTodolist(): void {
@@ -38,9 +40,19 @@ namespace View {
             if ($todo == "x") {
                 echo "Batal menambahkan todo" . PHP_EOL;
             } else {
-                $this->todolistService->removeTodolist($pilihan);
+                $this->todolistService->AddTodolist($todo);
             }
 
+        }
+
+        function removeTodolist(): void {
+            echo "MENGHAPUS TODO" . PHP_EOL;
+            $pilihan = InputHelper::input("Nomor (x untuk batalkan");
+            if ($pilihan == "x") {
+                echo "Batal menghapus todo" . PHP_EOL;
+            } else {
+                $this->todolistService->removeTodolist($pilihan);
+            }
         }
     }
 }
