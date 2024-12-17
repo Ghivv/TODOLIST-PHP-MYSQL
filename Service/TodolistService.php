@@ -16,11 +16,10 @@ namespace Service {
             $this->todolistRepository = $todolistRepository;
         }
 
-        function showTodolist(): void
-        {
+        function showTodolist(): void {
             echo "TODOLIST" . PHP_EOL;
-            $todolists = $this->todolistRepository->findAll();
-            foreach ($todolists as $number => $value) {
+            $todolist = $this->todolistRepository->findAll();
+            foreach ($todolist as $number => $value) {
                 echo $value->getId() . ". " . $value->getTodo() . PHP_EOL;
             }
         }
